@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Agent Schema · ODI Demo Reference Doc</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    color: #111;
+    background: #fff;
+    line-height: 1.5;
+  }
+
+  /* ---- header bar ---- */
+  .header {
+    background: #111;
+    color: #fff;
+    padding: 14px 40px;
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+  }
+  .header-title {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .header-sub {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #888;
+  }
+
+  /* ---- content area ---- */
+  .content {
+    padding: 28px 40px 40px;
+    max-width: 860px;
+  }
+
+  .eyebrow {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 6px;
+  }
+
+  .demo-name {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .tagline {
+    font-size: 11px;
+    color: #444;
+    max-width: 680px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  /* ---- section ---- */
+  .section { margin-bottom: 22px; }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #111;
+    border-bottom: 1px solid #111;
+    padding-bottom: 3px;
+    margin-bottom: 10px;
+  }
+
+  .section-body {
+    font-size: 11px;
+    color: #333;
+    line-height: 1.65;
+    max-width: 820px;
+  }
+
+  /* ---- two-col table ---- */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .info-table tr {
+    border-bottom: 1px solid #eee;
+  }
+  .info-table td {
+    padding: 5px 0;
+    vertical-align: top;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  .info-table td:first-child {
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #999;
+    width: 140px;
+    padding-right: 16px;
+    padding-top: 6px;
+  }
+  .info-table td:last-child {
+    color: #222;
+    width: calc(100% - 140px);
+  }
+
+  /* ---- persona table ---- */
+  .persona-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .persona-table tr {
+    border-bottom: 1px solid #eee;
+  }
+  .persona-table td {
+    padding: 5px 0;
+    vertical-align: top;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  .persona-table td:first-child {
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #999;
+    width: 160px;
+    padding-right: 16px;
+    padding-top: 6px;
+  }
+  .persona-table td:last-child {
+    color: #333;
+  }
+
+  /* ---- links row ---- */
+  .links-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 4px;
+  }
+  .link-item {
+    display: flex;
+    gap: 12px;
+    font-size: 10px;
+  }
+  .link-label {
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #999;
+    width: 60px;
+    flex-shrink: 0;
+  }
+  .link-value {
+    color: #111;
+    font-family: 'Courier New', monospace;
+  }
+
+  /* ---- footer ---- */
+  .footer {
+    background: #111;
+    color: #888;
+    padding: 18px 40px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.9;
+    margin-top: 20px;
+  }
+
+  @media print {
+    body { font-size: 10px; }
+    .header { padding: 10px 30px; }
+    .content { padding: 20px 30px 28px; }
+    .footer { padding: 14px 30px; }
+    @page { margin: 0; size: letter portrait; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span class="header-title">Agent Schema</span>
+  <span class="header-sub">ODI &nbsp;·&nbsp; Fivetran + dbt Labs Open Standard</span>
+</div>
+
+<div class="content">
+
+  <p class="eyebrow">Fivetran ODI Demo &nbsp;·&nbsp; Reference Doc</p>
+  <h1 class="demo-name">Agent Schema.</h1>
+  <p class="tagline">
+    Beacon Analytics runs three AI agents — RevOps, Finance, and GTM — each computing MRR independently.
+    They return three different numbers. Agent Schema solves it: one queryable schema holds every metric definition,
+    dbt model lineage edge, and business glossary term. Every agent reads from the same place before acting.
+    No hallucinated metrics. No conflicting answers.
+  </p>
+
+  <!-- WHAT THE DEMO DOES -->
+  <div class="section">
+    <div class="section-label">What the demo does</div>
+    <p class="section-body">
+      The app opens with a side-by-side comparison: three agents all answering "What is our MRR?" with
+      conflicting numbers, versus a single agent querying <code>beacon_agents.metric_definitions</code> first and
+      returning the canonical answer. An interactive Schema Explorer — modeled after VS Code — lets the audience
+      browse six live metric definitions (MRR, ARR, NRR, Churn Rate, CAC, LTV), four dbt models with lineage,
+      and three Agent Schema tables with column-level documentation. The Agent Chat section replays four
+      real agent questions with the three-step loop visible: query schema, receive definition, answer confidently.
+      The pipeline diagram closes the technical story: sources → Fivetran → Iceberg → dbt Gold → Agent Schema → AI agents.
+    </p>
+  </div>
+
+  <!-- ARCHITECTURE -->
+  <div class="section">
+    <div class="section-label">Architecture in one table</div>
+    <table class="info-table">
+      <tr>
+        <td>Sources</td>
+        <td>Stripe &nbsp;·&nbsp; Salesforce</td>
+      </tr>
+      <tr>
+        <td>Ingestion</td>
+        <td>Fivetran managed connectors &nbsp;·&nbsp; schedule, retry, schema drift handled</td>
+      </tr>
+      <tr>
+        <td>Storage</td>
+        <td>Databricks Iceberg on S3 &nbsp;·&nbsp; ACID, time-travel, open format</td>
+      </tr>
+      <tr>
+        <td>Transform</td>
+        <td>dbt &nbsp;·&nbsp; staging → mart → agent schema layer &nbsp;·&nbsp; 10+ models, tests, docs</td>
+      </tr>
+      <tr>
+        <td>Agent Schema</td>
+        <td>beacon_agents.metric_definitions &nbsp;·&nbsp; beacon_agents.model_lineage &nbsp;·&nbsp; beacon_agents.business_glossary &nbsp;·&nbsp; 47 metrics · 312 lineage edges · 128 glossary terms</td>
+      </tr>
+      <tr>
+        <td>AI Surface</td>
+        <td>Any agent framework (Claude, GPT, LangChain) &nbsp;·&nbsp; queries schema before acting</td>
+      </tr>
+      <tr>
+        <td>Viewer</td>
+        <td>Vite + React + TypeScript &nbsp;·&nbsp; static export to GitHub Pages</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- WHO THIS DEMO SERVES -->
+  <div class="section">
+    <div class="section-label">Who this demo serves</div>
+    <table class="persona-table">
+      <tr>
+        <td>Sales Engineer</td>
+        <td>A working app that exercises every ODI layer in fifteen minutes — something a customer can load on their phone during the conversation</td>
+      </tr>
+      <tr>
+        <td>Data Engineer</td>
+        <td>How agent context stays governed as pipelines and schema definitions change — no manual prompt updates</td>
+      </tr>
+      <tr>
+        <td>Analytics Engineer</td>
+        <td>How dbt semantic models and metric definitions flow automatically into a queryable schema the moment a PR merges</td>
+      </tr>
+      <tr>
+        <td>Data Platform Buyer</td>
+        <td>One schema as the portable truth layer between pipelines and AI — framework-agnostic, open format, no vendor lock-in</td>
+      </tr>
+      <tr>
+        <td>Executive Sponsor</td>
+        <td>Every agent answers the same question the same way — because they all read the same definition before answering</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- WHY ODI IS THE STORY -->
+  <div class="section">
+    <div class="section-label">Why ODI is the story</div>
+    <p class="section-body">
+      Fivetran moves data from Stripe and Salesforce into Iceberg on Databricks. dbt transforms through three layers —
+      staging, marts, and a dedicated agent schema layer. That final layer is an open standard co-developed by Fivetran
+      and dbt Labs: every metric definition, model lineage edge, and business glossary term is published into queryable
+      SQL tables automatically when a dbt run completes. Any agent — regardless of vendor or framework — can
+      <code>SELECT</code> from the schema before acting. The context is governed by the same pipeline that built
+      the underlying data. No bespoke prompt engineering. No drift between what the model says and what the
+      warehouse contains.
+    </p>
+  </div>
+
+  <!-- LINKS -->
+  <div class="section">
+    <div class="links-row">
+      <div class="link-item">
+        <span class="link-label">Live Demo</span>
+        <span class="link-value">fivetran-jasonchletsos.github.io/AgentSchema-ODI-Demo</span>
+      </div>
+      <div class="link-item">
+        <span class="link-label">Source</span>
+        <span class="link-value">github.com/fivetran-jasonchletsos/AgentSchema-ODI-Demo</span>
+      </div>
+      <div class="link-item">
+        <span class="link-label">Data</span>
+        <span class="link-value">Beacon Analytics (fictional B2B SaaS company — all data synthetic)</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<div class="footer">
+  Fictional company &nbsp;·&nbsp; Beacon Analytics &nbsp;·&nbsp; All metrics, employees, and business data are synthetic
+  &nbsp;&nbsp;·&nbsp;&nbsp;
+  Built with Fivetran + dbt Labs + Databricks &nbsp;·&nbsp; Open standard: Agent Schema
+</div>
+
+</body>
+</html>

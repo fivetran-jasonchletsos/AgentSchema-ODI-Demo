@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Agent Schema · Demo Script</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11.5px;
+    color: #111;
+    background: #fff;
+    line-height: 1.6;
+  }
+
+  .header {
+    background: #111;
+    color: #fff;
+    padding: 14px 44px;
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+  }
+  .header-title { font-size: 17px; font-weight: 800; letter-spacing: -0.02em; }
+  .header-sub   { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #777; }
+
+  .content { padding: 30px 44px 48px; max-width: 880px; }
+
+  .eyebrow {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: #999; margin-bottom: 5px;
+  }
+  .doc-title {
+    font-size: 24px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px;
+  }
+  .doc-sub {
+    font-size: 11px; color: #555; margin-bottom: 28px; line-height: 1.5;
+  }
+
+  /* --- beat block --- */
+  .beat {
+    margin-bottom: 30px;
+    border-left: 3px solid #111;
+    padding-left: 18px;
+  }
+
+  .beat-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .beat-num {
+    font-size: 9px; font-weight: 800; letter-spacing: 0.18em;
+    text-transform: uppercase; color: #bbb; flex-shrink: 0;
+  }
+  .beat-title {
+    font-size: 13px; font-weight: 800; color: #111;
+  }
+  .beat-time {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #aaa; margin-left: auto;
+  }
+
+  .beat-action {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: #999; margin-bottom: 5px;
+    margin-top: 10px;
+  }
+
+  .talk {
+    font-size: 12px; color: #222; line-height: 1.7;
+    margin-bottom: 8px;
+  }
+
+  .talk em { font-style: italic; color: #666; }
+
+  .aside {
+    font-size: 10.5px; color: #777; line-height: 1.6;
+    background: #f7f7f7; border-left: 2px solid #ddd;
+    padding: 8px 12px; margin-top: 8px;
+    font-style: italic;
+  }
+
+  .click-list {
+    list-style: none; padding: 0;
+    display: flex; flex-direction: column; gap: 5px;
+    margin-top: 6px;
+  }
+  .click-list li {
+    display: flex; align-items: baseline; gap: 10px;
+    font-size: 11px; color: #333;
+  }
+  .click-list li::before {
+    content: "→";
+    font-weight: 700; color: #aaa; flex-shrink: 0;
+  }
+
+  .divider {
+    border: none; border-top: 1px solid #e8e8e8;
+    margin: 28px 0;
+  }
+
+  /* --- tip box --- */
+  .tip {
+    border: 1px solid #ddd; border-radius: 4px;
+    padding: 10px 14px; margin-top: 10px;
+    font-size: 10.5px; color: #555; line-height: 1.6;
+  }
+  .tip strong { color: #111; font-weight: 700; }
+
+  /* --- objection box --- */
+  .objection {
+    border-left: 3px solid #999;
+    padding: 8px 0 8px 14px;
+    margin-top: 10px;
+  }
+  .objection .q { font-size: 11px; font-weight: 700; color: #333; margin-bottom: 4px; }
+  .objection .a { font-size: 11px; color: #444; line-height: 1.6; }
+
+  .footer {
+    background: #111; color: #666;
+    padding: 16px 44px;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; line-height: 1.9;
+    margin-top: 16px;
+  }
+
+  @media print {
+    body { font-size: 10.5px; }
+    .header, .content, .footer { padding-left: 32px; padding-right: 32px; }
+    .beat { page-break-inside: avoid; }
+    @page { margin: 0; size: letter portrait; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span class="header-title">Agent Schema</span>
+  <span class="header-sub">ODI Demo &nbsp;·&nbsp; Talk Track</span>
+</div>
+
+<div class="content">
+  <p class="eyebrow">Fivetran ODI Demo &nbsp;·&nbsp; Demo Script</p>
+  <h1 class="doc-title">Agent Schema — Demo Script</h1>
+  <p class="doc-sub">
+    Total runtime: ~10 minutes. No login required. Works on any device.
+    Open the demo before you start: <strong>fivetran-jasonchletsos.github.io/AgentSchema-ODI-Demo</strong>
+  </p>
+
+  <!-- BEAT 1 -->
+  <div class="beat">
+    <div class="beat-header">
+      <span class="beat-num">Beat 01</span>
+      <span class="beat-title">Set the problem — the AI data trust crisis</span>
+      <span class="beat-time">~90 sec</span>
+    </div>
+
+    <div class="beat-action">Say this</div>
+    <p class="talk">
+      "Every company I talk to right now is standing up AI agents. And the first thing that breaks isn't the model —
+      the model is actually pretty good. What breaks is the numbers. You have a RevOps agent answering questions
+      about MRR, a Finance agent doing the same thing, a GTM agent doing the same thing — and they all return
+      different answers. Because they each brought their own definition of what MRR means."
+    </p>
+    <p class="talk">
+      "This isn't an AI problem. It's a data governance problem. And Fivetran and dbt Labs built something to solve it.
+      It's called Agent Schema — and it's an open standard for giving every agent a single place to read
+      from before it acts."
+    </p>
+
+    <div class="aside">
+      If you're in front of a technical audience, add: "It's literally a schema in your warehouse —
+      beacon_agents — three tables: metric definitions, model lineage, business glossary.
+      Any agent can SELECT from it. No proprietary SDK. No new service to manage."
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- BEAT 2 -->
+  <div class="beat">
+    <div class="beat-header">
+      <span class="beat-num">Beat 02</span>
+      <span class="beat-title">Problem section — show the conflict</span>
+      <span class="beat-time">~60 sec</span>
+    </div>
+
+    <div class="beat-action">On screen: scroll to the Problem section (second section of the page)</div>
+    <ul class="click-list">
+      <li>Point at the left panel — three agents, three different MRR answers</li>
+      <li>Point at the right panel — one agent querying the schema, one correct answer</li>
+    </ul>
+
+    <div class="beat-action">Say this</div>
+    <p class="talk">
+      "Here's what the 'before' looks like at Beacon Analytics — a fictional B2B SaaS company I use for this demo.
+      Three AI agents all asked the same question: 'What is our MRR?' Three different answers. Each agent pulled
+      from somewhere slightly different. None of them were technically wrong — they just weren't using the same definition."
+    </p>
+    <p class="talk">
+      "Now look at the right side. Same question, but this time the agent queries the Agent Schema first —
+      <em>then</em> it answers. One query. One definition. Consistent every time."
+    </p>
+
+    <div class="tip">
+      <strong>If someone asks about the fictional company:</strong> "Beacon Analytics is made up — all the numbers are synthetic.
+      The architecture is real. Same pattern works with Stripe and Salesforce regardless of company."
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- BEAT 3 -->
+  <div class="beat">
+    <div class="beat-header">
+      <span class="beat-num">Beat 03</span>
+      <span class="beat-title">Schema Explorer — browse the definitions</span>
+      <span class="beat-time">~3 min</span>
+    </div>
+
+    <div class="beat-action">On screen: scroll to the Schema Explorer section</div>
+
+    <p class="talk">
+      "This is the Agent Schema Explorer — think of it as VS Code for your metric definitions. Three tabs:
+      Metrics, Models, Tables. I'll start with MRR since that's the one we just talked about."
+    </p>
+
+    <ul class="click-list">
+      <li>Show the MRR entry selected in the sidebar — note the plain-language definition</li>
+      <li>Point at the Formula line</li>
+      <li>Scroll down to the SQL Reference block — walk through the syntax highlighting</li>
+      <li>Point at the Metadata band: Owner (Maya Chen), Team (RevOps), Refresh (Daily at 06:00 ET)</li>
+    </ul>
+
+    <p class="talk">
+      "Every metric has an owner, a team, a refresh cadence, and a canonical SQL query. When the RevOps agent
+      asks about MRR, it gets this definition — not its own interpretation of a Stripe table."
+    </p>
+
+    <div class="beat-action">Switch to Models tab</div>
+    <ul class="click-list">
+      <li>Click fct_mrr_movements — show the column table</li>
+      <li>Point at the Lineage section: upstream from stg_stripe_subscriptions and stg_salesforce_accounts</li>
+    </ul>
+    <p class="talk">
+      "The model lineage is also in the schema. An agent can see exactly what feeds this model before it writes a query.
+      It's not reading docs. It's reading SQL tables — the same ones that Fivetran and dbt build automatically."
+    </p>
+
+    <div class="beat-action">Switch to Tables tab</div>
+    <ul class="click-list">
+      <li>Click beacon_agents.metric_definitions — show row count (47 metrics) and column list</li>
+      <li>Point at the auto-publish note at the bottom</li>
+    </ul>
+    <p class="talk">
+      "This is the actual table the agents query. 47 metric definitions. Published automatically via GitHub Actions
+      every time a dbt model or metric definition changes. No manual updates. The agent always gets the current version."
+    </p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- BEAT 4 -->
+  <div class="beat">
+    <div class="beat-header">
+      <span class="beat-num">Beat 04</span>
+      <span class="beat-title">Agent Chat — show the loop live</span>
+      <span class="beat-time">~2 min</span>
+    </div>
+
+    <div class="beat-action">On screen: scroll to the Agent Chat section</div>
+    <p class="talk">
+      "Now let me show you what the agent actually sees. I'll pick a question — let's use MRR."
+    </p>
+
+    <ul class="click-list">
+      <li>Click "What is our MRR this month?"</li>
+      <li>Watch the three-step animation: spinning dot (querying schema) → green checkmark (schema result) → answer bubble</li>
+    </ul>
+
+    <p class="talk">
+      "Three steps. Step one: the agent fires a query against the Agent Schema — you can see the exact SQL.
+      Step two: the schema returns the canonical definition, formula, and source model.
+      Step three: the agent uses that definition to answer — and it cites the source. No hallucination.
+      No inventing a formula. It reads, then it answers."
+    </p>
+
+    <ul class="click-list">
+      <li>Click "How is Net Revenue Retention calculated?" — point at the formula in the schema result</li>
+    </ul>
+
+    <p class="talk">
+      "NRR is a great example. The denominator is starting MRR on the first day of the period — not the average.
+      That distinction matters. Finance owns this definition. Without the schema, every agent makes its own call
+      on which denominator to use. With it, they all use Finance's."
+    </p>
+
+    <div class="aside">
+      Optional: click the other two questions if the audience wants to see more.
+      "What sources feed the revenue model?" and "Which team owns the churn metric?" both
+      demonstrate the lineage and ownership use cases.
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- BEAT 5 -->
+  <div class="beat">
+    <div class="beat-header">
+      <span class="beat-num">Beat 05</span>
+      <span class="beat-title">Pipeline — the technical story</span>
+      <span class="beat-time">~90 sec</span>
+    </div>
+
+    <div class="beat-action">On screen: scroll to the Pipeline section</div>
+
+    <p class="talk">
+      "Here's the full architecture. Six nodes. Fivetran moves data from Stripe and Salesforce into Iceberg on Databricks.
+      dbt runs three transformation layers — staging, mart, and the agent schema layer. That last node —
+      Agent Schema — is the one we just browsed. It publishes every metric definition, lineage edge,
+      and glossary term into queryable tables. Then any AI agent reads from it before acting."
+    </p>
+
+    <ul class="click-list">
+      <li>Point at the Agent Schema node — glowing cyan, "OPEN STANDARD" badge</li>
+      <li>Point at the three feature cards below: dbt Wizard, dbt State, Great Expectations</li>
+    </ul>
+
+    <p class="talk">
+      "Below the pipeline you can see three capabilities that make the schema trustworthy.
+      dbt Wizard generates the agent schema layer automatically. dbt State means only changed models
+      republish — incremental by default. Great Expectations validates the data before it ever
+      reaches the schema. Every agent reads from a tested, governed, up-to-date source."
+    </p>
+
+    <div class="aside">
+      If you're in front of a data engineering audience: "The dbt State integration means you're not
+      re-running 200 models to update one metric definition. Only the models that changed run.
+      The agent schema stays current without burning your warehouse credits."
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- BEAT 6 -->
+  <div class="beat">
+    <div class="beat-header">
+      <span class="beat-num">Beat 06</span>
+      <span class="beat-title">Close — what to leave them with</span>
+      <span class="beat-time">~30 sec</span>
+    </div>
+
+    <p class="talk">
+      "Agent Schema isn't a new service. It's a new layer in the pipeline you're already building.
+      Fivetran moves the data. dbt transforms and publishes it. Your agents query before they act.
+      The whole thing is open format — standard SQL, standard Iceberg, no vendor lock-in.
+      And it ships in the same pipeline run that built the underlying data."
+    </p>
+    <p class="talk">
+      "If you're already using Fivetran and dbt, you're one pipeline step away from this."
+    </p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- OBJECTIONS -->
+  <div class="beat">
+    <div class="beat-header">
+      <span class="beat-num">Q&A</span>
+      <span class="beat-title">Common objections and responses</span>
+    </div>
+
+    <div class="objection">
+      <div class="q">"We're not using dbt. Does this still work?"</div>
+      <div class="a">
+        "Agent Schema is an open standard — it's a schema in your warehouse, not a dbt feature.
+        dbt Labs is the co-author, which means dbt makes publishing automatic. But you can populate
+        the tables with any transformation layer. The spec is open."
+      </div>
+    </div>
+
+    <div class="objection">
+      <div class="q">"How do agents discover that the schema exists?"</div>
+      <div class="a">
+        "You add it to the agent's system prompt or tool definition once: 'Before answering any metric question,
+        query beacon_agents.metric_definitions.' After that, every agent in your org uses it automatically.
+        One line per agent. Never update it again."
+      </div>
+    </div>
+
+    <div class="objection">
+      <div class="q">"What if a metric definition changes? Does the agent pick it up automatically?"</div>
+      <div class="a">
+        "Yes. The schema is just a SQL table. The next time the agent runs, it reads the current row.
+        No prompt updates. No redeployment. The governance is in the pipeline, not in the agent."
+      </div>
+    </div>
+
+    <div class="objection">
+      <div class="q">"Is this production-ready or a roadmap item?"</div>
+      <div class="a">
+        "The open standard is live — the spec is published and Fivetran has reference implementations running.
+        The demo app you're looking at is built on the real schema structure. Talk to your Fivetran rep
+        about implementation timelines for your stack."
+      </div>
+    </div>
+
+    <div class="objection">
+      <div class="q">"Can this work with Claude / GPT / LangChain / our internal model?"</div>
+      <div class="a">
+        "Any agent that can issue a SQL query can use Agent Schema. It's not a proprietary API.
+        The agent queries a table, reads a row, uses the definition. That pattern works with any framework."
+      </div>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<div class="footer">
+  Fivetran ODI Demo &nbsp;·&nbsp; Agent Schema Talk Track
+  &nbsp;&nbsp;·&nbsp;&nbsp;
+  Live demo: fivetran-jasonchletsos.github.io/AgentSchema-ODI-Demo
+  &nbsp;&nbsp;·&nbsp;&nbsp;
+  All company data fictional
+</div>
+
+</body>
+</html>
