@@ -181,8 +181,18 @@ const Hero: React.FC = () => {
             </p>
 
             <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap" }}>
-              <button className="btn btn-primary">Explore the Schema</button>
-              <button className="btn btn-ghost">See Agent Demo</button>
+              <button
+                className="btn btn-primary"
+                onClick={() => document.getElementById('schema-explorer')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Explore the Schema
+              </button>
+              <button
+                className="btn btn-ghost"
+                onClick={() => document.getElementById('agent-demo')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                See Agent Demo
+              </button>
             </div>
           </div>
 

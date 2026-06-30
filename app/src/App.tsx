@@ -11,7 +11,7 @@ export default function App() {
       <Hero />
       <ProblemSection />
 
-      <section style={{ padding: '96px 0', background: 'var(--bg)' }}>
+      <section id="schema-explorer" style={{ padding: '96px 0', background: 'var(--bg)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 40px' }}>
           <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--cyan)', marginBottom: 16 }}>
             AGENT SCHEMA EXPLORER
@@ -26,7 +26,7 @@ export default function App() {
         </div>
       </section>
 
-      <section style={{ padding: '96px 0', background: 'var(--surface)' }}>
+      <section id="agent-demo" style={{ padding: '96px 0', background: 'var(--surface)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 40px' }}>
           <AgentChat />
         </div>
